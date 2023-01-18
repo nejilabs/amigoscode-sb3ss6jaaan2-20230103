@@ -1,3 +1,4 @@
+############# Database Properties ###########################################
 spring:
   datasource:
     url: "jdbc:${env.SPRING_DATASOURCE_DRIVER}://${env.SPRING_DATASOURCE_HOST}:${env.SPRING_DATASOURCE_PORT}/${env.SPRING_DATASOURCE_DATABASE}"
