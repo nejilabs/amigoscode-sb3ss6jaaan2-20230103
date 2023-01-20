@@ -29,7 +29,7 @@ public class JwtService {
   private static String getJwtServiceSecretKey;
 
   public String extractUsername(String token) {
-    return null;
+    return extractClaim(token, Claims::getSubject);
   }
 
   public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
