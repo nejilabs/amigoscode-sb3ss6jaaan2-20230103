@@ -14,3 +14,8 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+############# Jwt Properties ###########################################
+jwt:
+  service:
+    secret-key: ${env.JWT_SERVICE_SECRET-KEY}
