@@ -2,6 +2,9 @@ package com.nejilabs.backend.config;
 
 import java.io.IOException;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final JwtService jwtService;
+  private UserDetailsService userDetailsService;
 
   @Override
   protected void doFilterInternal(
@@ -31,5 +35,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
     jwt = authHeader.substring(7);
     userEmail = jwtService.extractUsername(jwt);
+    if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
+      UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+    }
   }
 }
