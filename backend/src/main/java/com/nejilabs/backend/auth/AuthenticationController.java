@@ -19,7 +19,7 @@ public class AuthenticationController {
   }
 
   @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticateResponse> register(
+  public ResponseEntity<AuthenticateResponse> authenticate(
       @RequestBody AuthenticationRequest request) {
     //
   }
